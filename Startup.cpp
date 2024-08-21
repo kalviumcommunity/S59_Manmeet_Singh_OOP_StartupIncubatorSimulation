@@ -1,21 +1,20 @@
 #include "Startup.h"
 #include <iostream>
 
-using namespace std;
+Startup::Startup(std::string name, std::string industry, int funding) 
+    : name(name), industry(industry), funding(funding) {
+}
 
-namespace IncubatorSim {
-    Startup::Startup(string n, string ind, double fund) : name(n), industry(ind), funding(fund) {}
+std::string Startup::get_name() const {  
+    return this->name;
+}
 
-    void Startup::pitch_idea() {
-        cout << name << " is pitching their innovative idea in the " << industry << " industry." << endl;
-    }
+void Startup::pitch_idea() {
+    std::cout << "Pitching idea for " << this->name << " in the " << this->industry << " industry." << std::endl;
+}
 
-    void Startup::get_funding(double amount) {
-        funding += amount;
-        cout << name << " has received funding of $" << amount << ". Total funding is now $" << funding << "." << endl;
-    }
-
-    string Startup::get_name() const {
-        return name;
-    }
+Startup& Startup::get_funding(int amount) {
+    this->funding += amount;
+    std::cout << this->name << " has received funding. Total funding: $" << this->funding << std::endl;
+    return *this;
 }

@@ -1,20 +1,15 @@
-#ifndef INCUBATOR_H
-#define INCUBATOR_H
-
-#include "Startup.h"
+#include <string>
 #include <vector>
+#include "Startup.h"
 
-namespace IncubatorSim {
-    class Incubator {
-    private:
-        std::string name;
-        std::vector<Startup> startups;
+class Incubator {
+private:
+    std::string name;
+    std::vector<Startup> startups;
 
-    public:
-        Incubator(std::string n);
-        void accept_startup(Startup startup);
-        void provide_resources(Startup &startup);
-    };
-}
+public:
+    Incubator(std::string name);
 
-#endif
+    Incubator& accept_startup(const Startup& startup);
+    void provide_resources();
+};

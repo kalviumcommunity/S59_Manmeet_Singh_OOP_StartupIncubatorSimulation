@@ -1,17 +1,18 @@
 #include "Incubator.h"
 #include <iostream>
 
-using namespace std;
+Incubator::Incubator(std::string name) : name(name) {
+}
 
-namespace IncubatorSim {
-    Incubator::Incubator(string n) : name(n) {}
+Incubator& Incubator::accept_startup(const Startup& startup) {
+    this->startups.push_back(startup);
+    std::cout << "Startup " << startup.get_name() << " has been accepted into " << this->name << " incubator." << std::endl;
+    return *this;
+}
 
-    void Incubator::accept_startup(Startup startup) {
-        startups.push_back(startup);
-        cout << "The startup " << startup.get_name() << " has been accepted into the incubator " << name << "." << endl;
-    }
-
-    void Incubator::provide_resources(Startup &startup) {
-        cout << "The incubator " << name << " is providing resources to " << startup.get_name() << "." << endl;
+void Incubator::provide_resources() {
+    std::cout << "Providing resources to startups in the " << this->name << " incubator." << std::endl;
+    for (Startup& startup : this->startups) {
+        startup.get_funding(10000);
     }
 }

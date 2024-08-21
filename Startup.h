@@ -1,22 +1,15 @@
-#ifndef STARTUP_H
-#define STARTUP_H
-
 #include <string>
 
-namespace IncubatorSim {
-    class Startup {
-    private:
-        std::string name;
-        std::string industry;
-        double funding;
+class Startup {
+private:
+    std::string name;
+    std::string industry;
+    int funding;
 
-    public:
-        Startup(std::string n, std::string ind, double fund);
-        void pitch_idea();
-        void get_funding(double amount);
-        std::string get_name() const;
-    };
-}
+public:
+    Startup(std::string name, std::string industry, int funding);
 
-#endif
-    
+    std::string get_name() const; 
+    void pitch_idea();
+    Startup& get_funding(int amount);
+};

@@ -1,19 +1,24 @@
 #include "Startup.h"
 #include "Incubator.h"
+#include <iostream>
 
-using namespace IncubatorSim;
+using namespace std;
 
 int main() {
-    Startup s1("TechNova", "Technology", 50000);
-    Startup s2("HealthPlus", "Healthcare", 30000);
+  
+    Startup startups[] = {
+        Startup("TechNova", "Technology", 50000),
+        Startup("HealthPlus", "Healthcare", 30000),
+        Startup("EcoSolutions", "Environmental", 45000)
+    };
+
 
     Incubator i1("InnovateX");
 
-    s1.pitch_idea();
-    s2.get_funding(20000);
-
-    i1.accept_startup(s1);
-    i1.provide_resources(s1);
+  
+    for (int i = 0; i < 3; ++i) {
+        i1.accept_startup(startups[i]);
+    }
 
     return 0;
 }

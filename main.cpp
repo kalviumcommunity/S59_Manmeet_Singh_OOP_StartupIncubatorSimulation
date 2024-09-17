@@ -19,6 +19,10 @@ int main() {
 
     i1->provide_resources();
 
+   
+    cout << "Total startups accepted: " << Incubator::get_total_startups() << endl;
+    cout << "Total funding provided to all startups: $" << Startup::get_total_funding() << endl;
+
     for (int i = 0; i < 3; ++i) {
         delete startups[i];
     }

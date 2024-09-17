@@ -4,9 +4,8 @@
 
 int Startup::totalFunding = 0;
 
-Startup::Startup(std::string name, std::string industry, int funding) 
-    : name(name), industry(industry), funding(funding) {
-}
+Startup::Startup(std::string name, std::string industry, int funding)
+    : name(name), industry(industry), funding(funding) {}
 
 std::string Startup::get_name() const {
     return this->name;
@@ -23,6 +22,7 @@ Startup& Startup::get_funding(int amount) {
     return *this;
 }
 
+
 int Startup::get_total_funding() {
-    return totalFunding; 
+    return totalFunding;
 }

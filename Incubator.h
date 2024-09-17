@@ -13,6 +13,9 @@ public:
 
     Incubator& accept_startup(Startup* startup);
     void provide_resources();
+    
+    
     static int get_total_startups(); 
+
     ~Incubator();
 };

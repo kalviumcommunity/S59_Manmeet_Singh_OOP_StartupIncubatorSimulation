@@ -9,14 +9,13 @@ private:
     static int totalFunding;
 
 public:
-
+    Startup();
     Startup(std::string name, std::string industry, int funding);
+    Startup(const Startup& other);
 
- 
     void operate() const override;
     std::string get_name() const override;
 
-    
     std::string get_industry() const;
     int get_funding() const;
 
@@ -24,11 +23,10 @@ public:
     void set_industry(const std::string& new_industry);
     void set_funding(int new_funding);
 
-
     Startup& receive_funding(int amount);
-
-  
     static int get_total_funding();
+
+    ~Startup();
 };
 
 #endif

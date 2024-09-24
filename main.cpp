@@ -13,8 +13,11 @@ int main() {
 
     Incubator* i1 = new Incubator("InnovateX");
 
+  
+    i1->operate();
     for (int i = 0; i < 3; ++i) {
         i1->accept_startup(startups[i]);
+        startups[i]->operate(); 
     }
 
     i1->provide_resources();
@@ -22,7 +25,7 @@ int main() {
     cout << "Total startups accepted: " << Incubator::get_total_startups() << endl;
     cout << "Total funding provided to all startups: $" << Startup::get_total_funding() << endl;
 
-    // Cleanup
+    
     for (int i = 0; i < 3; ++i) {
         delete startups[i];
     }

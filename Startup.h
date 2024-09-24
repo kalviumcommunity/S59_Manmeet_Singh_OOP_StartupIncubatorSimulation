@@ -1,27 +1,34 @@
-#include <string>
+#ifndef STARTUP_H
+#define STARTUP_H
 
-class Startup {
+#include "Organization.h"
+
+class Startup : public Organization {
 private:
-    std::string name;
-    std::string industry;
-    int funding; 
-    static int totalFunding; 
+    int funding;
+    static int totalFunding;
 
 public:
+
     Startup(std::string name, std::string industry, int funding);
 
-    // Accessor methods
-    std::string get_name() const;
+ 
+    void operate() const override;
+    std::string get_name() const override;
+
+    
     std::string get_industry() const;
     int get_funding() const;
 
-    // Mutator methods
     void set_name(const std::string& new_name);
     void set_industry(const std::string& new_industry);
     void set_funding(int new_funding);
 
-    void pitch_idea();
-    Startup& receive_funding(int amount); // renamed for clarity
-    
-    static int get_total_funding(); 
+
+    Startup& receive_funding(int amount);
+
+  
+    static int get_total_funding();
 };
+
+#endif

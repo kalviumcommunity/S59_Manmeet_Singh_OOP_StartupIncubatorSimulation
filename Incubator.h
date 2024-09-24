@@ -1,26 +1,29 @@
-#include <string>
+#ifndef INCUBATOR_H
+#define INCUBATOR_H
+
 #include <vector>
+#include "Organization.h"
 #include "Startup.h"
 
-class Incubator {
+class Incubator : public Organization {
 private:
-    std::string name;
     std::vector<Startup*> startups;
-    static int totalStartups; 
+    static int totalStartups;
 
 public:
     Incubator(std::string name);
 
-    // Accessor methods
-    std::string get_name() const;
+   
+    void operate() const override;
+    std::string get_name() const override;
 
-    // Mutator methods
-    void set_name(const std::string& new_name);
+   
+    static int get_total_startups();
 
     Incubator& accept_startup(Startup* startup);
     void provide_resources();
-    
-    static int get_total_startups(); 
 
     ~Incubator();
 };
+
+#endif

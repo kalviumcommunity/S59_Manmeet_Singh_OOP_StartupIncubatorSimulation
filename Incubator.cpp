@@ -3,8 +3,17 @@
 
 int Incubator::totalStartups = 0;
 
+Incubator::Incubator() : Organization() {
+    std::cout << "Default constructor called for Incubator." << std::endl;
+}
+
 Incubator::Incubator(std::string name)
     : Organization(name, "Incubation") {}
+
+Incubator::Incubator(const Incubator& other)
+    : Organization(other.name, other.industry), startups(other.startups) {
+    std::cout << "Copy constructor called for Incubator: " << name << std::endl;
+}
 
 void Incubator::operate() const {
     std::cout << "Operating incubator: " << name << std::endl;
@@ -33,6 +42,7 @@ void Incubator::provide_resources() {
 }
 
 Incubator::~Incubator() {
+    std::cout << "Incubator " << name << " is being destroyed." << std::endl;
     for (Startup* startup : this->startups) {
         delete startup;
     }

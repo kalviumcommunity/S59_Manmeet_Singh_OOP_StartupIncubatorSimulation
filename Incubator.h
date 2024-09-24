@@ -11,15 +11,14 @@ private:
     static int totalStartups;
 
 public:
+    Incubator();
     Incubator(std::string name);
+    Incubator(const Incubator& other);
 
-   
     void operate() const override;
     std::string get_name() const override;
 
-   
     static int get_total_startups();
-
     Incubator& accept_startup(Startup* startup);
     void provide_resources();
 

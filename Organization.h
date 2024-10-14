@@ -9,10 +9,10 @@ protected:
     std::string industry;
 
 public:
-    Organization();
-    Organization(std::string name, std::string industry);
+    Organization(); 
+    Organization(std::string name, std::string industry);  
 
-    virtual void operate() const = 0;
+    virtual void operate() const = 0;  
     virtual std::string get_name() const = 0;
 
     virtual ~Organization();

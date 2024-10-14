@@ -6,39 +6,28 @@
 using namespace std;
 
 int main() {
+    cout << "Abstract Class" << endl;
     
-
-  
-    cout << "----- Default Constructor -----" << endl;
-    Startup* defaultStartup = new Startup();  
-    defaultStartup->operate();
+    Organization* org1 = new Startup("HealthPlus", "Healthcare", 30000);  
+    org1->operate();
     cout << endl;
 
-    
-    cout << "----- Parameterized Constructor -----" << endl;
-    Startup* paramStartup = new Startup("HealthPlus", "Healthcare", 30000);  
-    paramStartup->operate();
-    cout << endl;
-
- 
-    cout << "----- Copy Constructor -----" << endl;
-    Startup* copyStartup = new Startup(*paramStartup);  
-    copyStartup->operate();
+    Organization* org2 = new TechStartup("QuantumLeap", "Technology", 75000, "Quantum Computing");
+    org2->operate();
+    cout << "Tech focus of " << org2->get_name() << ": " << static_cast<TechStartup*>(org2)->get_tech_focus() << endl;
     cout << endl;
 
    
-    cout << "----- Array of Startups Using Parameterized Constructor -----" << endl;
-    Startup* startups[] = {
+    Organization* startups[] = {
         new Startup("TechNova", "Technology", 50000),
         new Startup("EcoSolutions", "Environmental", 45000)
     };
 
-   
     Incubator* i1 = new Incubator("InnovateX");
     i1->operate();
 
     for (int i = 0; i < 2; ++i) {
-        i1->accept_startup(startups[i]);
+        i1->accept_startup(static_cast<Startup*>(startups[i]));
         startups[i]->operate();
     }
 
@@ -48,27 +37,16 @@ int main() {
     cout << "Total funding provided to all startups: $" << Startup::get_total_funding() << endl;
     cout << endl;
 
-    
-    cout << "----- TechStartup: Constructor Overloading -----" << endl;
-    TechStartup* techStart = new TechStartup("QuantumLeap", "Technology", 75000, "Quantum Computing");  
-    techStart->operate();
-    cout << "Tech focus of " << techStart->get_name() << ": " << techStart->get_tech_focus() << endl;
-    cout << endl;
-
    
-    cout << "----- Incubator Copy Constructor -----" << endl;
     Incubator* copiedIncubator = new Incubator(*i1);  
     copiedIncubator->operate();
     cout << endl;
 
-    
-    delete defaultStartup;
-    delete paramStartup;
-    delete copyStartup;
-    // for (int i = 0; i < 2; ++i) {
-    //     delete startups[i];
-    // }
-    delete techStart;
+    delete org1;
+    delete org2;
+    for (int i = 0; i < 2; ++i) {
+        delete startups[i];
+    }
     delete i1;
     delete copiedIncubator;
 

@@ -9,9 +9,10 @@ private:
     static int totalFunding;
 
 public:
-    Startup();
-    Startup(std::string name, std::string industry, int funding);
-    Startup(const Startup& other);
+    
+    Startup();  
+    Startup(std::string name, std::string industry, int funding);  
+    Startup(const Startup& other); 
 
     void operate() const override;
     std::string get_name() const override;

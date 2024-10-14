@@ -3,12 +3,17 @@
 
 int Startup::totalFunding = 0;
 
+
 Startup::Startup() : Organization(), funding(0) {
     std::cout << "Default constructor called for Startup." << std::endl;
 }
 
+
 Startup::Startup(std::string name, std::string industry, int funding)
-    : Organization(name, industry), funding(funding) {}
+    : Organization(name, industry), funding(funding) {
+    std::cout << "Parameterized constructor called for Startup: " << name << std::endl;
+}
+
 
 Startup::Startup(const Startup& other)
     : Organization(other.name, other.industry), funding(other.funding) {
@@ -16,7 +21,7 @@ Startup::Startup(const Startup& other)
 }
 
 void Startup::operate() const {
-    std::cout << "Pitching idea for startup: " << name << " in the " << industry << " industry." << std::endl;
+    std::cout << "Operating startup: " << name << " in the " << industry << " industry." << std::endl;
 }
 
 std::string Startup::get_name() const {
